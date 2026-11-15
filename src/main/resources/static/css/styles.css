@@ -148,3 +148,34 @@ body[data-color-mode="colorblind"] .colorbtn,body[data-color-mode="contrast"] .c
 .evidence-icon svg,.mp-row-icon svg{width:20px;height:20px;display:block}
 /* Insignia de la PNP dentro del HTML: el ancho se ajusta solo a la altura indicada */
 .seal img{width:auto;max-width:100%;max-height:100%;object-fit:contain}
+
+/* =====================================================================
+   Modo de color: oscuro (4.º clic del botón "Color")
+   Fondo negro azulado, superficies grises oscuras y texto blanco.
+   Contrastes calculados para nivel AA de WCAG 2.2 (texto ≥ 4.5:1).
+   ===================================================================== */
+body[data-color-mode="dark"]{color-scheme:dark;--navy:#FFFFFF;--blue:#7CC4FF;--blue2:#A9D8FF;--bg:#0B0F14;--ink:#F2F5F8;--muted:#C2CCD6;--line:#3A4656;--white:#151B23;--green:#7CC4FF;--greenbg:#0F2A44;--pale:#1C2632;--red:#FF9C94;--redbg:#3A1715;--shadow:0 0 0 1px #2A3441}
+body[data-color-mode="dark"] :is(.topbar,.navwrap,.card,.toolbtn,.btn.secondary,.glossary article,.evidence-list,.icon-action,.chat-bubble,.chat-compose,.chat-demo,.case-option,.notice){background:#151B23;color:var(--ink)}
+body[data-color-mode="dark"] :is(.toolbtn,.btn.secondary){border-color:#5A6878;color:#F2F5F8}
+body[data-color-mode="dark"] :is(input,select,textarea){background:#0F141B!important;color:#F2F5F8!important;border-color:#6B7A8C!important}
+body[data-color-mode="dark"] ::placeholder{color:#9AA7B4}
+body[data-color-mode="dark"] .btn{background:#7CC4FF;color:#0B0F14}
+body[data-color-mode="dark"] .btn:hover{background:#A9D8FF}
+body[data-color-mode="dark"] .btn.secondary:hover{background:#1C2632}
+body[data-color-mode="dark"] :is(.footer,.chat-head,.mp-banner,.seal.seal-text){background:#000;color:#fff}
+body[data-color-mode="dark"] :is(.chat-head,.mp-banner){border:1px solid #3A4656}
+body[data-color-mode="dark"] .footer{border-top:1px solid #3A4656}
+body[data-color-mode="dark"] .mp-banner .btn{background:#7CC4FF;color:#0B0F14}
+body[data-color-mode="dark"] .chat-avatar{background:#7CC4FF;color:#0B0F14}
+body[data-color-mode="dark"] nav button{color:#C2CCD6}
+body[data-color-mode="dark"] nav button.active{color:#7CC4FF;border-bottom-color:#7CC4FF}
+body[data-color-mode="dark"] :is(.detailrow,.evidence-item){border-bottom-color:#2A3441}
+body[data-color-mode="dark"] .info{border-color:#3A4656}
+body[data-color-mode="dark"] .timeline li:before{border-color:#0B0F14}
+body[data-color-mode="dark"] :is(.status.review,.pill.pending){background:#3A2E00;color:#FFD866}
+body[data-color-mode="dark"] .status.review:before{background:#FFD866}
+body[data-color-mode="dark"] .alert.error{border-color:#7A2E2A}
+body[data-color-mode="dark"] .alert.success{border-color:#2D5B85}
+body[data-color-mode="dark"] .alert[role="note"],body[data-color-mode="dark"] > div[role="note"]{background:#2B2300!important;color:#FFE08A!important;border-color:#6B5600!important}
+body[data-color-mode="dark"] .colorbtn{background:#1C2632;border-color:#7CC4FF;color:#7CC4FF}
+body[data-color-mode="dark"] .seal img{filter:drop-shadow(0 0 1px rgba(255,255,255,.35))}

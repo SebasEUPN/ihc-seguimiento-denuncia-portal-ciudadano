@@ -107,7 +107,8 @@ $("helpTop").addEventListener("click", () => showView("help"));
 const colorModes = [
   { id: "normal", label: "vista normal" },
   { id: "colorblind", label: "paleta apta para daltonismo" },
-  { id: "contrast", label: "alto contraste" }
+  { id: "contrast", label: "alto contraste" },
+  { id: "dark", label: "modo oscuro" }
 ];
 const colorModeButton = $("colorMode");
 function setColorMode(modeId) {
