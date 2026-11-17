@@ -3,6 +3,8 @@ package com.proyecto.portal.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.SecondaryTable;
 import jakarta.persistence.Table;
 
 import java.time.LocalDateTime;
@@ -15,6 +17,10 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Table(name = "usuario")
+// El rango/cargo y la dependencia están en la tabla del perfil ("policia" o
+// "fiscal"), unidas 1 a 1 con "usuario". Hibernate las lee con LEFT JOIN.
+@SecondaryTable(name = "policia", pkJoinColumns = @PrimaryKeyJoinColumn(name = "id_usuario"))
+@SecondaryTable(name = "fiscal", pkJoinColumns = @PrimaryKeyJoinColumn(name = "id_usuario"))
 public class Usuario {
 
     @Id
@@ -34,11 +40,19 @@ public class Usuario {
     @Column(name = "rol")
     private String rol;
 
-    @Column(name = "rango")
-    private String rango;
+    // ----- Tabla "policia" -----
+    @Column(name = "rango", table = "policia")
+    private String policiaRango;
 
-    @Column(name = "dependencia")
-    private String dependencia;
+    @Column(name = "dependencia", table = "policia")
+    private String policiaDependencia;
+
+    // ----- Tabla "fiscal" -----
+    @Column(name = "cargo", table = "fiscal")
+    private String fiscalCargo;
+
+    @Column(name = "despacho", table = "fiscal")
+    private String fiscalDespacho;
 
     @Column(name = "habilitado")
     private boolean habilitado;
@@ -61,8 +75,10 @@ public class Usuario {
     public String getNombres() { return nombres; }
     public String getApellidos() { return apellidos; }
     public String getRol() { return rol; }
-    public String getRango() { return rango; }
-    public String getDependencia() { return dependencia; }
+    /** Rango del policía o cargo del fiscal. */
+    public String getRango() { return "FISCAL".equals(rol) ? fiscalCargo : policiaRango; }
+    /** Dependencia policial o despacho fiscal. */
+    public String getDependencia() { return "FISCAL".equals(rol) ? fiscalDespacho : policiaDependencia; }
     public boolean isHabilitado() { return habilitado; }
     public LocalDateTime getUltimoAcceso() { return ultimoAcceso; }
 }

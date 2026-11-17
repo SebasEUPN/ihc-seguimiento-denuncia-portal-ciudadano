@@ -179,3 +179,35 @@ body[data-color-mode="dark"] .alert.success{border-color:#2D5B85}
 body[data-color-mode="dark"] .alert[role="note"],body[data-color-mode="dark"] > div[role="note"]{background:#2B2300!important;color:#FFE08A!important;border-color:#6B5600!important}
 body[data-color-mode="dark"] .colorbtn{background:#1C2632;border-color:#7CC4FF;color:#7CC4FF}
 body[data-color-mode="dark"] .seal img{filter:drop-shadow(0 0 1px rgba(255,255,255,.35))}
+
+/* =====================================================================
+   Modos de color para distintos tipos de daltonismo (botón "Color").
+   Cada paleta usa solo colores que ese tipo de visión distingue bien, y
+   los estados siempre llevan texto además del color.
+   ===================================================================== */
+/* Protanopia (dificultad con el rojo): azul y amarillo; el rojo se reemplaza por naranja oscuro */
+body[data-color-mode="protanopia"]{--navy:#0B2E59;--blue:#0060B0;--blue2:#00457F;--ink:#10202F;--muted:#44586B;--line:#BFD0E0;--green:#00507F;--greenbg:#D9ECFF;--pale:#E8F2FB;--red:#7A3300;--redbg:#FFE1C7}
+body[data-color-mode="protanopia"] :is(.status.review,.pill.pending){background:#FFF3A6;color:#5C4A00}
+body[data-color-mode="protanopia"] .status.review:before{background:#5C4A00}
+body[data-color-mode="protanopia"] :is(.status,.pill){border:1px solid currentColor}
+body[data-color-mode="protanopia"] .colorbtn{background:var(--pale);border-color:var(--blue);color:var(--blue)}
+/* Deuteranopia (dificultad con el verde): azul índigo y naranja; el verde se reemplaza por celeste */
+body[data-color-mode="deuteranopia"]{--navy:#1B2A6B;--blue:#1F449C;--blue2:#162F70;--ink:#151B33;--muted:#4A5270;--line:#C6CDE3;--green:#0B3C7A;--greenbg:#D6E9FF;--pale:#EAEEFA;--red:#7A2459;--redbg:#F8DDEC}
+body[data-color-mode="deuteranopia"] :is(.status.review,.pill.pending){background:#FFE6BD;color:#8A4A00}
+body[data-color-mode="deuteranopia"] .status.review:before{background:#8A4A00}
+body[data-color-mode="deuteranopia"] :is(.status,.pill){border:1px solid currentColor}
+body[data-color-mode="deuteranopia"] .colorbtn{background:var(--pale);border-color:var(--blue);color:var(--blue)}
+/* Tritanopia (dificultad con azul y amarillo): verde azulado y rojo; se evita el amarillo */
+body[data-color-mode="tritanopia"]{--navy:#0E3A40;--blue:#00666F;--blue2:#004B52;--ink:#12282B;--muted:#4A6164;--line:#C2D6D8;--green:#00565E;--greenbg:#D3F0F1;--pale:#E6F4F5;--red:#8C0F22;--redbg:#FFD0D6}
+body[data-color-mode="tritanopia"] :is(.status.review,.pill.pending){background:#FFDCE1;color:#9B1B30}
+body[data-color-mode="tritanopia"] .status.review:before{background:#9B1B30}
+body[data-color-mode="tritanopia"] :is(.status,.pill){border:1px solid currentColor}
+body[data-color-mode="tritanopia"] .colorbtn{background:var(--pale);border-color:var(--blue);color:var(--blue)}
+/* Acromatopsia (visión sin color): escala de grises con contraste alto */
+body[data-color-mode="mono"]{--navy:#111111;--blue:#2B2B2B;--blue2:#000000;--ink:#111111;--muted:#4D4D4D;--line:#BDBDBD;--green:#1F1F1F;--greenbg:#E4E4E4;--pale:#EFEFEF;--red:#000000;--redbg:#D9D9D9}
+body[data-color-mode="mono"] :is(.status.review,.pill.pending){background:#FFFFFF;color:#000000}
+body[data-color-mode="mono"] .status.review:before{background:#000000}
+body[data-color-mode="mono"] :is(.status,.pill){border:1px solid currentColor}
+body[data-color-mode="mono"] .colorbtn{background:var(--pale);border-color:var(--blue);color:var(--blue)}
+/* En acromatopsia toda la página (imágenes y gráficos incluidos) pasa a escala de grises */
+html:has(body[data-color-mode="mono"]){filter:grayscale(1)}

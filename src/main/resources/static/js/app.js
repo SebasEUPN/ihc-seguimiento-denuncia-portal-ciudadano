@@ -104,11 +104,17 @@ $("helpTop").addEventListener("click", () => showView("help"));
    Accesibilidad: modo de color, lectura por voz y tamaño del texto
    --------------------------------------------------------------------- */
 
+// Cada modo tiene sus colores en styles.css (reglas body[data-color-mode="..."]).
+// "corto" es el texto que se muestra en el botón para saber qué modo está activo.
 const colorModes = [
-  { id: "normal", label: "vista normal" },
-  { id: "colorblind", label: "paleta apta para daltonismo" },
-  { id: "contrast", label: "alto contraste" },
-  { id: "dark", label: "modo oscuro" }
+  { id: "normal", label: "vista normal", corto: "Color" },
+  { id: "colorblind", label: "paleta general para daltonismo", corto: "Daltonismo" },
+  { id: "protanopia", label: "protanopia (dificultad con el rojo)", corto: "Protanopia" },
+  { id: "deuteranopia", label: "deuteranopia (dificultad con el verde)", corto: "Deuteranopia" },
+  { id: "tritanopia", label: "tritanopia (dificultad con azul y amarillo)", corto: "Tritanopia" },
+  { id: "mono", label: "acromatopsia (escala de grises)", corto: "Grises" },
+  { id: "contrast", label: "alto contraste", corto: "Contraste" },
+  { id: "dark", label: "modo oscuro", corto: "Oscuro" }
 ];
 const colorModeButton = $("colorMode");
 function setColorMode(modeId) {
@@ -116,6 +122,8 @@ function setColorMode(modeId) {
   if (mode.id === "normal") document.body.removeAttribute("data-color-mode"); else document.body.dataset.colorMode = mode.id;
   colorModeButton.setAttribute("aria-label", `Cambiar colores: ${mode.label}`);
   colorModeButton.title = `Modo actual: ${mode.label}. Pulsa para cambiar.`;
+  const etiqueta = colorModeButton.querySelector("span");
+  if (etiqueta) etiqueta.textContent = mode.corto;
   // La preferencia se recuerda en el navegador (si este lo permite)
   try { localStorage.setItem("pnp-color-mode", mode.id); } catch (e) { /* almacenamiento no disponible */ }
 }
