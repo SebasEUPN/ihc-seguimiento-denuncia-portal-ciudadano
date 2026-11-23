@@ -96,6 +96,8 @@ function showView(id) {
   if (id === "cases") cargarDenuncias();
   if (id === "prosecutor") mostrarFiscalia();
   if (id === "notifications") cargarNotificaciones();
+  // La primera vez que se llega a esta pantalla se abre su tutorial guiado (js/tutorial.js)
+  if (typeof tutorialDeVista === "function") tutorialDeVista(id);
 }
 nav.forEach(b => b.addEventListener("click", () => showView(b.dataset.view)));
 $("helpTop").addEventListener("click", () => showView("help"));

@@ -211,3 +211,6 @@ body[data-color-mode="mono"] :is(.status,.pill){border:1px solid currentColor}
 body[data-color-mode="mono"] .colorbtn{background:var(--pale);border-color:var(--blue);color:var(--blue)}
 /* En acromatopsia toda la página (imágenes y gráficos incluidos) pasa a escala de grises */
 html:has(body[data-color-mode="mono"]){filter:grayscale(1)}
+/* Botón del tutorial guiado (barra de accesibilidad) */
+.tutorialbtn{display:inline-flex;align-items:center;gap:7px;font-weight:750}
+@media(max-width:560px){.tutorialbtn span{display:none}}
